@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "pixi": "^0.3.1"
+  }
+}

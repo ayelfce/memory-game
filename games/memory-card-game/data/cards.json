@@ -1,0 +1,51 @@
+[
+    {
+        "image": "../images/blue.jpeg",
+        "name": "blue"
+    },
+
+    {
+        "image": "../images/brown.jpeg",
+        "name": "brown"
+    },
+
+    {
+        "image": "../images/butterfly.jpeg",
+        "name": "butterfly"
+    },
+
+    {
+        "image": "../images/fuchsia.jpeg",
+        "name": "fuchsia"
+    },
+
+    {
+        "image": "../images/gold.jpeg",
+        "name": "gold"
+    },
+
+    {
+        "image": "../images/green.jpeg",
+        "name": "green"
+    },
+
+    {
+        "image": "../images/pink.jpeg",
+        "name": "pink"
+    },
+
+    {
+        "image": "../images/red.jpeg",
+        "name": "red"
+    },
+
+    {
+        "image": "../images/baby-blue.jpeg",
+        "name": "baby-blue"
+    },
+
+    {
+        "image": "../images/bee.jpeg",
+        "name": "bee"
+    }
+]
