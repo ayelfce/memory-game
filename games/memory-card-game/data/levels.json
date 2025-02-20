@@ -1,0 +1,15 @@
+{
+    "easy": {
+      "gridTemplateColumns": "repeat(3, 90px)",
+      "gridTemplateRows": "repeat(4, calc(90px / 2 * 3))"
+    },
+    "normal": {
+      "gridTemplateColumns": "repeat(4, 90px)",
+      "gridTemplateRows": "repeat(4, calc(90px / 2 * 3))"
+    },
+    "hard": {
+      "gridTemplateColumns": "repeat(5, 90px)",
+      "gridTemplateRows": "repeat(4, calc(90px / 2 * 3))"
+    }
+  }
+  
