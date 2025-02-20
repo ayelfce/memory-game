@@ -51,6 +51,25 @@ function updateHighScore(userId, newScore) {
 
 window.updateHighScore = updateHighScore;
 
+function addUserToDatabase(userName) {
+  const userRef = ref(database, "users/" + userName);
+
+  get(userRef).then((snapshot) => {
+    if (!snapshot.exists()) {
+      // Eğer kullanıcı yoksa, yeni kullanıcı oluştur
+      set(userRef, {
+        highScore: 0
+      })
+        .then(() => console.log(`Yeni kullanıcı ${userName} eklendi.`))
+        .catch(error => console.error("Hata:", error));
+    } else {
+      console.log(`Kullanıcı ${userName} zaten kayıtlı.`);
+    }
+  }).catch(error => console.error("Hata:", error));
+}
+
+window.addUserToDatabase = addUserToDatabase;
+
 // Ornek Kullanim
 // const userId = "deneme_user";
 // const newScore = 150;

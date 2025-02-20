@@ -44,7 +44,7 @@ fetch("./data/cards.json")
     .then((res) => res.json())
     .then((data) => {
         const cardCount = levelSettings.cardCount;
-        cards = [...data.slice(0,cardCount/2), ...data.slice(0,cardCount/2)];
+        cards = [...data.slice(0, cardCount / 2), ...data.slice(0, cardCount / 2)];
         shuffleCards();
         generateCards();
     });

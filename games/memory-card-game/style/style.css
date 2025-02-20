@@ -11,6 +11,10 @@ p {
     font-weight: bold;
 }
 
+h2 {
+    color: #12181f;
+}
+
 .header {
     text-align: center;
     font-weight: 700;
@@ -123,4 +127,26 @@ p {
 
 .actions button{
     margin: 0 10px;
+}
+
+#nameModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
 }
