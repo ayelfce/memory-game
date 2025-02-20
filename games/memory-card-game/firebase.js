@@ -18,8 +18,8 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const usersRef = ref(database, 'users');
 
-function updateHighScore(userId, newScore) {
-  const userRef = child(usersRef, userId);
+export function updateHighScore(userName, newScore) {
+  const userRef = child(usersRef, userName);
 
   get(userRef)
     .then((snapshot) => {
@@ -31,10 +31,10 @@ function updateHighScore(userId, newScore) {
         if (newScore > currentHighScore) {
           // Update high score
           update(userRef, { highScore: newScore })
-            .then(() => console.log(`High score for ${userId} updated to ${newScore}`))
+            .then(() => console.log(`High score for ${userName} updated to ${newScore}`))
             .catch((error) => console.error("Error updating high score:", error));
         } else {
-          console.log(`New score for ${userId} is not a high score.`);
+          console.log(`New score for ${userName} is not a high score.`);
         }
       } else {
         // User doesn't exist, create a new user
@@ -42,7 +42,7 @@ function updateHighScore(userId, newScore) {
           highScore: newScore
         };
         set(userRef, newUser)
-          .then(() => console.log(`New user ${userId} created with high score ${newScore}`))
+          .then(() => console.log(`New user ${userName} created with high score ${newScore}`))
           .catch((error) => console.error("Error creating new user:", error));
       }
     })
@@ -51,7 +51,7 @@ function updateHighScore(userId, newScore) {
 
 window.updateHighScore = updateHighScore;
 
-function addUserToDatabase(userName) {
+export function addUserToDatabase(userName) {
   const userRef = ref(database, "users/" + userName);
 
   get(userRef).then((snapshot) => {

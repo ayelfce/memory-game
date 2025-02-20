@@ -20,19 +20,16 @@ window.selectDifficulty = selectDifficulty;
 
 document.addEventListener("DOMContentLoaded", function () {
     let savedName = localStorage.getItem("playerName");
-    let modalShown = sessionStorage.getItem("modalShown"); // Tarayıcı açık olduğu sürece geçerli
 
-    if (savedName) {
-        console.log("Kayıtlı isim bulundu:", savedName);
-        document.getElementById("gameContent").classList.remove("hidden");  
-    }
-
-    if (!modalShown && !savedName) {
-        // Eğer modal daha önce gösterilmediyse ve kayıtlı isim yoksa modalı aç
+    if ((savedName == "null") || (savedName == null)) {
         document.getElementById("nameModal").style.display = "flex";
-    } else {
-        document.getElementById("nameModal").style.display = "none";
     }
+    else {
+        console.log("Kayıtlı isim bulundu:", savedName);
+        document.getElementById("nameModal").style.display = "none";
+        document.getElementById("gameContent").classList.remove("hidden");
+    }
+   
 
     document.getElementById("startButton").addEventListener("click", function () {
         let name = document.getElementById("playerName").value.trim();

@@ -1,3 +1,5 @@
+import { updateHighScore, addUserToDatabase } from './firebase.js';
+
 const gridContainer = document.querySelector(".grid-container");
 let cards = [];
 let firstCard, secondCard;
@@ -102,12 +104,25 @@ function checkForMatch() {
     isMatch ? disableCards() : unflipCards();
 }
 
+function checkForWin() {
+    let flippedCards = document.querySelectorAll(".flipped");
+    setTimeout(() => {
+        if (flippedCards.length === cards.length) {
+            alert("Tebrikler, oyunu başarıyla tamamladınız!");
+            let userName = localStorage.getItem("playerName");
+            updateHighScore(userName, score);
+            localStorage.setItem("playerName",null);
+        }
+    }
+    , 500);
+}
+
 function disableCards() {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
     score++;
     document.querySelector(".score").textContent = score;
-
+    checkForWin();
     resetBoard();
 }
 
