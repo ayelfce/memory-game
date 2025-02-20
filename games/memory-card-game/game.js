@@ -3,6 +3,7 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
+let levelSettings = {};
 
 document.querySelector(".score").textContent = score;
 
@@ -22,12 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const difficultyLevels = [
-        { "diff": "easy", "column": "repeat(3, 90px)", "row": "repeat(4, calc(90px / 2 * 3))" },
-        { "diff": "normal", "column": "repeat(4, 90px)", "row": "repeat(4, calc(90px / 2 * 3))" },
-        { "diff": "hard", "column": "repeat(5, 90px)", "row": "repeat(4, calc(90px / 2 * 3))" }
+        { "diff": "easy", "column": "repeat(4, 90px)", "row": "repeat(3, calc(90px / 2 * 3))", "cardCount": 12 },
+        { "diff": "normal", "column": "repeat(4, 90px)", "row": "repeat(4, calc(90px / 2 * 3))", "cardCount": 16 },
+        { "diff": "hard", "column": "repeat(5, 90px)", "row": "repeat(4, calc(90px / 2 * 3))", "cardCount": 20 }
     ];
 
-    let levelSettings = difficultyLevels.find(level => level.diff === selectedDifficulty);
+    levelSettings = difficultyLevels.find(level => level.diff === selectedDifficulty);
 
     if (levelSettings) {
         gridContainer.style.display = "grid";
@@ -42,7 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
 fetch("./data/cards.json")
     .then((res) => res.json())
     .then((data) => {
-        cards = [...data, ...data];
+        const cardCount = levelSettings.cardCount;
+        cards = [...data.slice(0,cardCount/2), ...data.slice(0,cardCount/2)];
         shuffleCards();
         generateCards();
     });

@@ -115,3 +115,12 @@ p {
     background-size: cover;
     backface-visibility: hidden;
 }
+
+.actions button:hover {
+    background-color: #a06fd1;
+    color: white;
+}
+
+.actions button{
+    margin: 0 10px;
+}
