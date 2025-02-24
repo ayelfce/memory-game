@@ -17,6 +17,7 @@ const app = initializeApp(firebaseConfig);
 // Realtime Database referansını al
 const database = getDatabase(app);
 const usersRef = ref(database, 'users');
+const leadsRef = ref(database, 'leaderboard');
 
 export function updateHighScore(userName, newScore) {
   const userRef = child(usersRef, userName);
@@ -31,7 +32,31 @@ export function updateHighScore(userName, newScore) {
         if (newScore > currentHighScore) {
           // Update high score
           update(userRef, { highScore: newScore })
-            .then(() => console.log(`High score for ${userName} updated to ${newScore}`))
+            .then(() => {
+              console.log(`High score for ${userName} updated to ${newScore}`)
+
+              get(leadsRef).then((snapshot) => {
+                if(snapshot.exists()){
+                  const leaderboard = snapshot.val();
+                  console.log(leaderboard.length);
+                  for(let i = 1; i < leaderboard.length; i++){
+                    if(newScore > leaderboard[i].score){
+                      for (let j = leaderboard.length - 1; j > i; j--) {
+                        leaderboard[j] = leaderboard[j - 1];
+                      }
+                      leaderboard[i] = {name: userName, score: newScore};
+                      const updates = {};
+                      updates[`/leaderboard`] = leaderboard;
+                      update(ref(database), updates)
+                        .then(() => console.log(`Leaderboard updated`))
+                        .catch((error) => console.error("Error updating leaderboard:", error));
+                      break;
+                    }
+                  }
+                  
+                }
+              })
+            })
             .catch((error) => console.error("Error updating high score:", error));
         } else {
           console.log(`New score for ${userName} is not a high score.`);
