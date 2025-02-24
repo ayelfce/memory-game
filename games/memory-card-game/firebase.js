@@ -19,6 +19,17 @@ const database = getDatabase(app);
 const usersRef = ref(database, 'users');
 const leadsRef = ref(database, 'leaderboard');
 
+export function getLeaderboard() {
+  get(leadsRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const leaderboard = snapshot.val();
+      return leaderboard;
+    }
+  }).catch((error) => console.error("Error getting leaderboard:", error));
+}
+
+window.getLeaderboard = getLeaderboard;
+
 export function updateHighScore(userName, newScore) {
   const userRef = child(usersRef, userName);
 
