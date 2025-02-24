@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-fetch("./data/cards.json")
+fetch("../data/cards.json")
     .then((res) => res.json())
     .then((data) => {
         const cardCount = levelSettings.cardCount;
@@ -111,10 +111,10 @@ function checkForWin() {
             alert("Tebrikler, oyunu başarıyla tamamladınız!");
             let userName = localStorage.getItem("playerName");
             updateHighScore(userName, score);
-            localStorage.setItem("playerName",null);
+            localStorage.setItem("playerName", null);
         }
     }
-    , 500);
+        , 500);
 }
 
 function disableCards() {

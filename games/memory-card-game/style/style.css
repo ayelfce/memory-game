@@ -6,6 +6,7 @@ body {
 }
 
 p {
+    padding-top: 50%;
     text-align: center;
     font-size: 30px;
     font-weight: bold;
@@ -13,6 +14,20 @@ p {
 
 h2 {
     color: #12181f;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.mini-logo {
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    width: 40%;
 }
 
 .header {
@@ -66,9 +81,14 @@ h2 {
     border-radius: 10px;
     background-color: #6600cc;
     color: white;
+    margin: 10px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
 }
 
 .grid-container {
+    padding-top: 5%;
     display: grid;
     justify-content: center;
     grid-gap: 16px;
@@ -125,10 +145,6 @@ h2 {
     color: white;
 }
 
-.actions button{
-    margin: 0 10px;
-}
-
 #nameModal {
     position: fixed;
     top: 0;
@@ -147,6 +163,37 @@ h2 {
     text-align: center;
 }
 
+.modal-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hidden {
     display: none;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.player {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #000;
+    padding: 10px;
+    width: 60%;
+    background-color: #a06fd1;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: left;
+}
+
+.player span {
+    font-weight: bold;
 }

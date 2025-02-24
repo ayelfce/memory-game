@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Memory Cards</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css" />
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div id="nameModal">
+        <div class="modal-content">
+            <h2>Enter Nickname</h2>
+            <div class="actions modal-input">
+                <input type="text" id="playerName" placeholder="Nickname" style="width: 50%; height: 50px;">
+                <button id="startButton" style="width: 40%;">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gameContent" class="hidden">
+        <div class="row">
+            <img src="../images/logo.png" alt="Logo" class="logo">
+            <div class="actions" style="flex-direction: column">
+                <button onclick="window.location.href='levels.html';">Play</button>
+                <button onclick="goToLeaderboard()">Leaderboard</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../scripts/firebase.js"></script>
+    <script type="module" src="../scripts/user.js"></script>
+</body>
+
+</html>

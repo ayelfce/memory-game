@@ -1,23 +1,3 @@
-const difficultyLevels = [
-    { "diff": "easy", "column": "repeat(4, 90px)", "row": "repeat(3, calc(90px / 2 * 3))" },
-    { "diff": "normal", "column": "repeat(4, 90px)", "row": "repeat(4, calc(90px / 2 * 3))" },
-    { "diff": "hard", "column": "repeat(5, 90px)", "row": "repeat(4, calc(90px / 2 * 3))" }
-];
-
-function setLevelDifficulty(difficulty) {
-    localStorage.setItem("selectedDifficulty", difficulty);
-}
-
-function selectDifficulty(difficulty) {
-    let diff = setLevelDifficulty(difficulty);
-    setTimeout(() => {
-        window.location.href = "game.html";
-    }, 100);
-    return diff;
-}
-
-window.selectDifficulty = selectDifficulty;
-
 document.addEventListener("DOMContentLoaded", function () {
     let savedName = localStorage.getItem("playerName");
 
@@ -29,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("nameModal").style.display = "none";
         document.getElementById("gameContent").classList.remove("hidden");
     }
-   
+
 
     document.getElementById("startButton").addEventListener("click", function () {
         let name = document.getElementById("playerName").value.trim();
@@ -38,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Girilen isim:", name);
             localStorage.setItem("playerName", name);
             sessionStorage.setItem("modalShown", "true"); // Modalın bir kere açıldığını işaretle
-            
+
             document.getElementById("nameModal").style.display = "none";
-            document.getElementById("gameContent").classList.remove("hidden"); 
+            document.getElementById("gameContent").classList.remove("hidden");
 
             if (typeof addUserToDatabase === "function") {
                 addUserToDatabase(name);
@@ -52,3 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+window.goToLeaderboard = function () {
+    getLeaderboard().then((leaderboardData) => {
+        window.location.href = 'board.html';
+    }).catch((error) => {
+        console.error("Veri çekme hatası:", error);
+    });
+}

@@ -20,12 +20,21 @@ const usersRef = ref(database, 'users');
 const leadsRef = ref(database, 'leaderboard');
 
 export function getLeaderboard() {
-  get(leadsRef).then((snapshot) => {
-    if (snapshot.exists()) {
-      const leaderboard = snapshot.val();
-      return leaderboard;
-    }
-  }).catch((error) => console.error("Error getting leaderboard:", error));
+  return get(leadsRef)  // Bu satır bir Promise döndürür
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const leaderboard = snapshot.val();
+        console.log("Leaderboard Data:", leaderboard);
+        return leaderboard;
+      } else {
+        console.log("No data available");
+        return {};
+      }
+    })
+    .catch((error) => {
+      console.error("Error getting leaderboard:", error);
+      return {};
+    });
 }
 
 window.getLeaderboard = getLeaderboard;
@@ -47,15 +56,15 @@ export function updateHighScore(userName, newScore) {
               console.log(`High score for ${userName} updated to ${newScore}`)
 
               get(leadsRef).then((snapshot) => {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                   const leaderboard = snapshot.val();
                   console.log(leaderboard.length);
-                  for(let i = 1; i < leaderboard.length; i++){
-                    if(newScore > leaderboard[i].score){
+                  for (let i = 1; i < leaderboard.length; i++) {
+                    if (newScore > leaderboard[i].score) {
                       for (let j = leaderboard.length - 1; j > i; j--) {
                         leaderboard[j] = leaderboard[j - 1];
                       }
-                      leaderboard[i] = {name: userName, score: newScore};
+                      leaderboard[i] = { name: userName, score: newScore };
                       const updates = {};
                       updates[`/leaderboard`] = leaderboard;
                       update(ref(database), updates)
@@ -64,7 +73,7 @@ export function updateHighScore(userName, newScore) {
                       break;
                     }
                   }
-                  
+
                 }
               })
             })
@@ -105,6 +114,7 @@ export function addUserToDatabase(userName) {
 }
 
 window.addUserToDatabase = addUserToDatabase;
+
 
 // Ornek Kullanim
 // const userId = "deneme_user";
