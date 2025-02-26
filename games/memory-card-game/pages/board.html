@@ -4,20 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard - Memeory Cards</title>
+    <title>Leaderboard - Memory Cards</title>
     <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 
 <body>
     <div class="column side">
-        <img src="../images/logo.png" alt="Logo" class="mini-logo">
+        <div class="actions" style="width: 65px; justify-content: left;">
+            <button onclick="history.back();">⬅</button>
+          </div>
     </div>
     <div class="column middle">
+        <img src="../images/logo.png" alt="Logo" class="mini-logo">
         <h1 class="header">Leaderboard</h1>
         <div id="leaderboard" class="leaderboard"></div>
         <script type="module" src="../scripts/firebase.js"></script>
         <script type="module" src="../scripts/leaderboard.js"></script>
     </div>
+    <div class="column side"></div>
 </body>
 
 </html>

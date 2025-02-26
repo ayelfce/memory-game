@@ -6,10 +6,10 @@ body {
 }
 
 p {
-    padding-top: 50%;
     text-align: center;
-    font-size: 30px;
+    font-size: 100%;
     font-weight: bold;
+    padding-top: 15%;
 }
 
 h2 {
@@ -20,14 +20,14 @@ h2 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30%;
+    width: 70%;
 }
 
 .mini-logo {
     display: block;
-    margin-left: 0;
+    margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 30%;
 }
 
 .header {
@@ -47,6 +47,7 @@ h2 {
 
 .column.middle {
     width: 50%;
+    height: 75%;
 }
 
 .topnav {
@@ -72,38 +73,143 @@ h2 {
 
 .actions {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 5px;
 }
 
 .actions button {
     padding: 8px 16px;
-    font-size: 30px;
+    font-size: 80%;
+    font-weight: bold;
     border-radius: 10px;
     background-color: #6600cc;
     color: white;
-    margin: 10px 10px;
+    margin: 5px 5px;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
 }
 
 .grid-container {
-    padding-top: 5%;
+    padding: 20px;
     display: grid;
     justify-content: center;
-    grid-gap: 16px;
-    grid-template-columns: repeat(4, 90px);
-    grid-template-rows: repeat(4, calc(90px / 2 * 3));
+    grid-gap: 2%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    transform-origin: top;
+    transform: scale(0.9);
 }
 
+
 .card {
-    height: calc(90px / 2 * 3);
-    width: 90px;
+    height: 95%;
+    width: 95%;
     border-radius: 10px;
     background-color: white;
     position: relative;
     transform-style: preserve-3d;
     transition: all 0.5s ease-in-out;
+}
+
+
+@media (max-width: 768px) and (orientation: portrait) {
+
+    .column.side,
+    .column.middle {
+        width: 100%;
+        float: none;
+        clear: both;
+    }
+
+    .column.middle {
+        height: 70%;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        transform: scale(0.8);
+    }
+
+    .card {
+        width: 90%;
+        height: 90%;
+    }
+
+    .header {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 550px) and (orientation: portrait) {
+    .column.middle {
+        height: 60%;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        transform: scale(0.7);
+    }
+
+    .card {
+        width: 85%;
+        height: 85%;
+    }
+
+    .header {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 350px) and (orientation: portrait) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        transform: scale(0.65);
+    }
+
+    .card {
+        width: 80%;
+        height: 80%;
+    }
+
+    .header {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        transform: scale(0.5);
+    }
+
+    .card {
+        width: 90%;
+        height: 90%;
+    }
+
+    .header {
+        font-size: 25px;
+    }
+
+    .leaderboard {
+        transform: scale(0.7);
+        transform-origin: top;
+    }
+
+    .header {
+        font-size: 15px;
+    }
 }
 
 .front-image {
@@ -161,24 +267,22 @@ h2 {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    width: 250px;
 }
 
 .modal-input {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.hidden {
-    display: none;
+    justify-content: left;
 }
 
 .leaderboard {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 20px;
 }
 
 .player {
@@ -196,4 +300,15 @@ h2 {
 
 .player span {
     font-weight: bold;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+#gameContent.hidden {
+    display: none;
 }
