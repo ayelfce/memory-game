@@ -108,7 +108,12 @@ function checkForWin() {
     let flippedCards = document.querySelectorAll(".flipped");
     setTimeout(() => {
         if (flippedCards.length === cards.length) {
+<<<<<<< HEAD
             alert("Tebrikler, oyunu başarıyla tamamladınız!");
+=======
+            document.getElementById("gameOverModal").style.display = "flex";
+            document.getElementById("finalScore").textContent = score;
+>>>>>>> refs/remotes/origin/main
             let userName = localStorage.getItem("playerName");
             updateHighScore(userName, score);
             localStorage.setItem("playerName", null);
