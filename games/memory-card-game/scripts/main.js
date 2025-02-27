@@ -17,13 +17,3 @@ function selectDifficulty(difficulty) {
 }
 
 window.selectDifficulty = selectDifficulty;
-<<<<<<< Updated upstream
-=======
-
-function toggleActions() {
-    var actionsDiv = document.querySelector(".actions");
-    actionsDiv.classList.toggle("show"); // Sınıfı ekleyip kaldırarak aç/kapat yap
-}
-
-window.toggleActions = toggleActions;
->>>>>>> Stashed changes
