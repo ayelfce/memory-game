@@ -109,6 +109,7 @@ function checkForWin() {
     setTimeout(() => {
         if (flippedCards.length === cards.length) {
             document.getElementById("gameOverModal").style.display = "flex";
+            document.getElementById("finalScore").textContent = score;
             let userName = localStorage.getItem("playerName");
             updateHighScore(userName, score);
             localStorage.setItem("playerName", null);
