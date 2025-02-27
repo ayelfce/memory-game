@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     else {
         console.log("Kayıtlı isim bulundu:", savedName);
         document.getElementById("nameModal").style.display = "none";
-        document.getElementById("gameContent").classList.remove("hidden");
+        document.getElementById("menuContent").classList.remove("hidden");
     }
 
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sessionStorage.setItem("modalShown", "true"); // Modalın bir kere açıldığını işaretle
 
             document.getElementById("nameModal").style.display = "none";
-            document.getElementById("gameContent").classList.remove("hidden");
+            document.getElementById("menuContent").classList.remove("hidden");
 
             if (typeof addUserToDatabase === "function") {
                 addUserToDatabase(name);

@@ -302,13 +302,57 @@ h2 {
     font-weight: bold;
 }
 
-.game-container {
+.menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
 }
 
-#gameContent.hidden {
+#menuContent.hidden {
     display: none;
 }
+
+#gameOverModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Diğer içeriklerin üstünde göster */
+    backdrop-filter: blur(2px);
+}
+
+.game-modal-content{
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    background-color: #b699d3;
+}
+
+.game-modal-content h2 {
+    color: #ffffff;
+    text-shadow: #000000 2px 2px 2px;
+    font-size: 35px;
+}
+
+.game-modal-content p {
+    color: #ffffff;
+    text-shadow: #000000 3px 3px 3px;
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-top: 0;
+}
+
+.game-modal-content #score{
+    font-size: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+ 

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="row">
+  <div class="row game-container">
     <div class="column side">
       <div class="actions" style="width: 65px; justify-content: left;">
         <button onclick="history.back();">⬅</button>
@@ -27,8 +27,28 @@
       </div>
     </div>
   </div>
-  <script type="module" src="../scripts/game.js"></script>
+  <div id="gameOverModal">
+    <div class="game-modal-content">
+      <h2>Game Over</h2>
+      <p>Score</p>
+      <p id="score">234</p>
+      <div class="actions">
+        <button onclick="restart()">Restart</button>
+        <button onclick="goToLeaderboard()">Leaderboard</button>
+      </div>
+    </div>
 
+  </div>
+  <script type="module" src="../scripts/game.js"></script>
+  <script>
+    window.goToLeaderboard = function () {
+    getLeaderboard().then((leaderboardData) => {
+        window.location.href = 'board.html';
+    }).catch((error) => {
+        console.error("Veri çekme hatası:", error);
+    });
+}
+  </script>
 </body>
 
 </html>
