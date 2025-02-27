@@ -9,20 +9,43 @@
 </head>
 
 <body>
-    <div class="row">
-      <div class="column side">
+  <div class="row">
+    <div class="column side">
       <div class="actions" style="width: 65px; justify-content: left;">
         <button onclick="history.back();">⬅</button>
       </div>
     </div>
     <div class="column middle">
       <img src="../images/logo.png" alt="Logo" class="logo">
-      <div class="actions">
-        <button onclick="selectDifficulty('easy');">Easy</button>
-        <button onclick="selectDifficulty('normal');">Normal</button>
-        <button onclick="selectDifficulty('hard');">Hard</button>
+      <div class="row">
+        <div class="column equal">
+<<<<<<< Updated upstream
+          <h2 class="sec-header">Easy</h2>
+=======
+          <h2 class="sec-header" onclick="toggleActions();">Easy</h2>
+>>>>>>> Stashed changes
+          <div class="actions square-button">
+            <button onclick="selectDifficulty('easy');">1</button>
+          </div>
+        </div>
+        <div class="column equal">
+          <h2 class="sec-header">Normal</h2>
+          <div class="actions square-button">
+            <button onclick="selectDifficulty('normal');">1</button>
+          </div>
+        </div>
+      </div>
+      <div class="column equal">
+        <h2 class="sec-header">Hard</h2>
+        <div class="actions square-button">
+          <button onclick="selectDifficulty('hard');">1</button>
+        </div>
       </div>
     </div>
+  </div>
+
+  </div>
+  </div>
   </div>
 </body>
 <script type="module" src="../scripts/main.js"></script>

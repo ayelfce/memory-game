@@ -13,7 +13,11 @@ p {
 }
 
 h2 {
-    color: #12181f;
+<<<<<<< Updated upstream
+    color: #000000;
+=======
+    color: #ffffff;
+>>>>>>> Stashed changes
 }
 
 .logo {
@@ -36,6 +40,19 @@ h2 {
     font-size: 35px;
 }
 
+.sec-header {
+<<<<<<< Updated upstream
+    color: #ffffff;
+=======
+>>>>>>> Stashed changes
+    margin: auto auto;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: solid 1px #e1e1e1;
+    width: 90%;
+    text-align: center;
+  }
+
 .column {
     padding-top: 10px;
     float: left;
@@ -48,6 +65,10 @@ h2 {
 .column.middle {
     width: 50%;
     height: 75%;
+}
+
+.column.equal {
+    width: 33%;
 }
 
 .topnav {
@@ -90,6 +111,19 @@ h2 {
     width: 70%;
 }
 
+.square-button {
+    width: 50px;  /* Kare yapmak için sabit genişlik */
+    height: 50px; /* Kare yapmak için sabit yükseklik */
+    padding: 0;   /* İç boşluğu sıfırla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px; /* Yazı boyutunu küçült */
+    border-radius: 10px; /* Mevcut butonlardaki oval kenarları koru */
+    margin: auto auto;
+}
+
+
 .grid-container {
     padding: 20px;
     display: grid;
@@ -124,6 +158,10 @@ h2 {
 
     .column.middle {
         height: 70%;
+    }
+
+    .column.equal {
+        width: 100%;
     }
 
     .actions {
