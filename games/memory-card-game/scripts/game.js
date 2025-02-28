@@ -6,6 +6,9 @@ let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
 let levelSettings = {};
+let time = 60;
+let timeLeft = time; // Sayaç başlangıç süresi (saniye)
+let timerInterval;
 
 document.querySelector(".score").textContent = score;
 
@@ -41,6 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    startTimer();
+});
+
 
 fetch("../data/cards.json")
     .then((res) => res.json())
@@ -50,6 +57,32 @@ fetch("../data/cards.json")
         shuffleCards();
         generateCards();
     });
+
+function startTimer() {
+    const timeElement = document.querySelector('.time');
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timeElement.textContent = Math.floor(timeLeft/60).toString().padStart(2,"0") + ":" + Math.floor(timeLeft%60).toString().padStart(2, "0");
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            gameOverLose();
+        }
+    }, 1000);
+}
+
+function gameOver() {
+    document.getElementById("gameOverModal").style.display = "flex";
+    document.getElementById("finalScore").textContent = score;
+    let userName = localStorage.getItem("playerName");
+    updateHighScore(userName, score);
+    localStorage.setItem("playerName", null);
+    clearInterval(timerInterval);
+}
+
+function gameOverLose() {
+    document.getElementById("gameOverModalLose").style.display = "flex";
+    clearInterval(timerInterval);
+}
 
 function shuffleCards() {
     let currentIndex = cards.length,
@@ -108,11 +141,7 @@ function checkForWin() {
     let flippedCards = document.querySelectorAll(".flipped");
     setTimeout(() => {
         if (flippedCards.length === cards.length) {
-            document.getElementById("gameOverModal").style.display = "flex";
-            document.getElementById("finalScore").textContent = score;
-            let userName = localStorage.getItem("playerName");
-            updateHighScore(userName, score);
-            localStorage.setItem("playerName", null);
+            gameOver();
         }
     }
         , 500);
@@ -144,12 +173,17 @@ function resetBoard() {
 function restart() {
     resetBoard();
     shuffleCards();
+    timeLeft = time;
     score = 0;
     document.querySelector(".score").textContent = score;
     gridContainer.innerHTML = "";
     generateCards();
     document.getElementById("gameOverModal").style.display = "none";
+    document.getElementById("gameOverModalLose").style.display = "none";
+    startTimer();
 }
 
 window.restart = restart;
+
+
 

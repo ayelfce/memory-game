@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Memory Cards</title>
   <link rel="stylesheet" type="text/css" href="../style/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -21,6 +22,7 @@
       <div class="grid-container"></div>
     </div>
     <div class="column side">
+      <p>⏳ <span class="time"></span></p>
       <p>Score: <span class="score"></span></p>
       <div class="actions">
         <button onclick="restart();">Restart</button>
@@ -29,15 +31,25 @@
   </div>
   <div id="gameOverModal">
     <div class="game-modal-content">
-      <h2>Game Over</h2>
+      <h2>GAME  OVER</h2>
       <p>Score</p>
       <p id="finalScore"></p>
       <div class="actions">
-        <button onclick="restart()">Restart</button>
-        <button onclick="goToLeaderboard()">Leaderboard</button>
+        <button onclick="restart()"><i class="fa-solid fa-rotate-left"></i></button>
+        <button onclick="goToLeaderboard()"><i class="fa-solid fa-chart-column"></i></button>
+        <button onclick="history.back();"><i class="fa-solid fa-right-from-bracket"></i></button>
       </div>
     </div>
-
+  </div>
+  <div id="gameOverModalLose">
+    <div class="game-modal-content">
+      <h2>Time's Up ⌛️</h2>
+      <div class="actions">
+        <button onclick="restart()"><i class="fa-solid fa-rotate-left"></i></button>
+        <button onclick="goToLeaderboard()"><i class="fa-solid fa-chart-column"></i></button>
+        <button onclick="history.back();"><i class="fa-solid fa-right-from-bracket"></i></button>
+      </div>
+    </div>
   </div>
   <script type="module" src="../scripts/game.js"></script>
   <script>

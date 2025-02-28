@@ -359,31 +359,65 @@ h2 {
     backdrop-filter: blur(2px);
 }
 
+#gameOverModalLose {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Diğer içeriklerin üstünde göster */
+    backdrop-filter: blur(2px);
+}
+
 .game-modal-content{
-    padding: 20px;
-    border-radius: 10px;
+    padding: 50px;
+    border-radius: 20px;
     text-align: center;
-    width: 250px;
+    width: 290px;
     background-color: #b699d3;
 }
 
+.game-modal-content .actions{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 25px;
+}
+
 .game-modal-content h2 {
-    color: #ffffff;
-    text-shadow: #000000 2px 2px 2px;
-    font-size: 35px;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-text-stroke: #6600cc 2px;
+    text-shadow: #000000 5px 5px 5px;
+    font-size: 45px;
 }
 
 .game-modal-content p {
     color: #ffffff;
-    text-shadow: #000000 3px 3px 3px;
+    -webkit-text-stroke: 1px black;
+    font-size: 27px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding-top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.game-modal-content #finalScore{
+    font-size: 50px;
+    -webkit-text-stroke: 5px black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 30;
+}
+
+.side p {
     font-size: 20px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding-top: 0;
-}
-
-.game-modal-content #score{
-    font-size: 40px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
  
