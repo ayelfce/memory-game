@@ -105,14 +105,13 @@ h2 {
 }
 
 .square-button {
-    width: 50px;  /* Kare yapmak için sabit genişlik */
-    height: 50px; /* Kare yapmak için sabit yükseklik */
-    padding: 0;   /* İç boşluğu sıfırla */
+    width: 50px;
+    height: 50px;
+    padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 15px; /* Yazı boyutunu küçült */
-    border-radius: 10px; /* Mevcut butonlardaki oval kenarları koru */
+    font-size: 15px;
+    border-radius: 10px;
     margin: auto auto;
 }
 
@@ -155,6 +154,7 @@ h2 {
 
     .column.equal {
         width: 100%;
+        margin-bottom: 45%;
     }
 
     .actions {

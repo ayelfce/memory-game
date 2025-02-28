@@ -5,15 +5,14 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
-let levelSettings = {};
 let time = 60;
 let timeLeft = time; // Sayaç başlangıç süresi (saniye)
 let timerInterval;
 
 document.querySelector(".score").textContent = score;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const gridContainer = document.querySelector(".grid-container"); // class yerine querySelector kullandık
+document.addEventListener("DOMContentLoaded", async function () {
+    const gridContainer = document.querySelector(".grid-container");
 
     if (!gridContainer) {
         console.log("gridContainer öğesi bulunamadı!");
@@ -27,20 +26,41 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    const difficultyLevels = [
-        { "diff": "easy", "column": "repeat(4, 90px)", "row": "repeat(3, calc(90px / 2 * 3))", "cardCount": 12 },
-        { "diff": "normal", "column": "repeat(4, 90px)", "row": "repeat(4, calc(90px / 2 * 3))", "cardCount": 16 },
-        { "diff": "hard", "column": "repeat(5, 90px)", "row": "repeat(4, calc(90px / 2 * 3))", "cardCount": 20 }
-    ];
+    try {
+        const res = await fetch("../data/levels.json");
+        const difficultyData = await res.json();
 
-    levelSettings = difficultyLevels.find(level => level.diff === selectedDifficulty);
+        // Önce zorluk seviyesini bul
+        const difficulty = difficultyData.find(d => selectedDifficulty.startsWith(d.diff));
 
-    if (levelSettings) {
-        gridContainer.style.display = "grid";
-        gridContainer.style.gridTemplateColumns = levelSettings.column;
-        gridContainer.style.gridTemplateRows = levelSettings.row;
-    } else {
-        console.log("Belirtilen zorluk seviyesi bulunamadı!");
+        if (!difficulty) {
+            console.log("Belirtilen zorluk kategorisi bulunamadı!");
+            return;
+        }
+
+        // Seçilen seviyeyi bul
+        const levelSettings = difficulty.levels.find(level => level.id === selectedDifficulty);
+
+        if (levelSettings) {
+            console.log("Seçilen zorluk ayarları:", levelSettings);
+
+            gridContainer.style.display = "grid";
+            gridContainer.style.gridTemplateColumns = levelSettings.column;
+            gridContainer.style.gridTemplateRows = levelSettings.row;
+
+            fetch("../data/cards.json")
+                .then((res) => res.json())
+                .then((data) => {
+                    const cardCount = levelSettings.cardCount;
+                    cards = [...data.slice(0, cardCount / 2), ...data.slice(0, cardCount / 2)];
+                    shuffleCards();
+                    generateCards();
+                });
+        } else {
+            console.log("Belirtilen seviye bulunamadı!");
+        }
+    } catch (error) {
+        console.error("Hata:", error);
     }
 });
 
@@ -49,20 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-fetch("../data/cards.json")
-    .then((res) => res.json())
-    .then((data) => {
-        const cardCount = levelSettings.cardCount;
-        cards = [...data.slice(0, cardCount / 2), ...data.slice(0, cardCount / 2)];
-        shuffleCards();
-        generateCards();
-    });
-
 function startTimer() {
     const timeElement = document.querySelector('.time');
     timerInterval = setInterval(() => {
         timeLeft--;
-        timeElement.textContent = Math.floor(timeLeft/60).toString().padStart(2,"0") + ":" + Math.floor(timeLeft%60).toString().padStart(2, "0");
+        timeElement.textContent = Math.floor(timeLeft / 60).toString().padStart(2, "0") + ":" + Math.floor(timeLeft % 60).toString().padStart(2, "0");
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             gameOverLose();

@@ -1,15 +1,71 @@
-{
-    "easy": {
-      "gridTemplateColumns": "repeat(3, 90px)",
-      "gridTemplateRows": "repeat(4, calc(90px / 2 * 3))"
-    },
-    "normal": {
-      "gridTemplateColumns": "repeat(4, 90px)",
-      "gridTemplateRows": "repeat(4, calc(90px / 2 * 3))"
-    },
-    "hard": {
-      "gridTemplateColumns": "repeat(5, 90px)",
-      "gridTemplateRows": "repeat(4, calc(90px / 2 * 3))"
-    }
+[
+  {
+    "diff": "easy",
+    "levels": [
+      {
+        "id": "easy-1",
+        "column": "repeat(2, 90px)",
+        "row": "repeat(2, calc(90px / 2 * 3))",
+        "cardCount": 4
+      },
+      {
+        "id": "easy-2",
+        "column": "repeat(3, 90px)",
+        "row": "repeat(2, calc(90px / 2 * 3))",
+        "cardCount": 6
+      },
+      {
+        "id": "easy-3",
+        "column": "repeat(4, 90px)",
+        "row": "repeat(3, calc(90px / 2 * 3))",
+        "cardCount": 12
+      }
+    ]
+  },
+  {
+    "diff": "normal",
+    "levels": [
+      {
+        "id": "normal-1",
+        "column": "repeat(4, 90px)",
+        "row": "repeat(3, calc(90px / 2 * 3))",
+        "cardCount": 12
+      },
+      {
+        "id": "normal-2",
+        "column": "repeat(4, 90px)",
+        "row": "repeat(4, calc(90px / 2 * 3))",
+        "cardCount": 16
+      },
+      {
+        "id": "normal-3",
+        "column": "repeat(4, 90px)",
+        "row": "repeat(4, calc(90px / 2 * 3))",
+        "cardCount": 16
+      }
+    ]
+  },
+  {
+    "diff": "hard",
+    "levels": [
+      {
+        "id": "hard-1",
+        "column": "repeat(4, 90px)",
+        "row": "repeat(4, calc(90px / 2 * 3))",
+        "cardCount": 16
+      },
+      {
+        "id": "hard-2",
+        "column": "repeat(5, 90px)",
+        "row": "repeat(4, calc(90px / 2 * 3))",
+        "cardCount": 20
+      },
+      {
+        "id": "hard-3",
+        "column": "repeat(5, 90px)",
+        "row": "repeat(4, calc(90px / 2 * 3))",
+        "cardCount": 20
+      }
+    ]
   }
-  
+]
