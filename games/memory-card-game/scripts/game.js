@@ -191,6 +191,7 @@ function restart() {
     generateCards();
     document.getElementById("gameOverModal").style.display = "none";
     document.getElementById("gameOverModalLose").style.display = "none";
+    clearInterval(timerInterval);
     startTimer();
 }
 
