@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("startButton").addEventListener("click", function () {
         let name = document.getElementById("playerName").value.trim();
+        let errorMessage = document.getElementById('error-message');
 
         if (name) {
             console.log("Girilen isim:", name);
@@ -27,8 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 console.error("addUserToDatabase fonksiyonu bulunamadı!");
             }
+            errorMessage.style.display = 'none';
         } else {
-            alert("Lütfen bir isim girin!");
+            errorMessage.textContent = 'Please enter a nickname first.';
+            errorMessage.style.display = 'block';
         }
     });
 });

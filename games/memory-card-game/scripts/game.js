@@ -5,8 +5,7 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
-let time = 60;
-let timeLeft = time; // Sayaç başlangıç süresi (saniye)
+let time;
 let timerInterval;
 
 document.querySelector(".score").textContent = score;
@@ -52,9 +51,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .then((res) => res.json())
                 .then((data) => {
                     const cardCount = levelSettings.cardCount;
+                    time = levelSettings.time;
                     cards = [...data.slice(0, cardCount / 2), ...data.slice(0, cardCount / 2)];
                     shuffleCards();
                     generateCards();
+                    startTimer(time);
                 });
         } else {
             console.log("Belirtilen seviye bulunamadı!");
@@ -69,16 +70,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function startTimer() {
-    const timeElement = document.querySelector('.time');
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        timeElement.textContent = Math.floor(timeLeft / 60).toString().padStart(2, "0") + ":" + Math.floor(timeLeft % 60).toString().padStart(2, "0");
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            gameOverLose();
-        }
-    }, 1000);
+function startTimer(time) {
+
+    if (time == null) {
+        time = 0;
+    } else {
+        let timeLeft = time;  // Initialize the countdown with the time passed to the function.
+        let timerInterval;
+
+        const timeElement = document.querySelector('.time');
+
+        // Ensure the timeElement has fixed width in CSS
+        timeElement.style.width = "5ch";  // Adjust according to your design
+        timeElement.style.textAlign = "center"; // Keeps text centered even when it changes length
+
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            timeElement.textContent = formatTime(timeLeft); // Update time as a string in MM:SS format
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                gameOverLose();  // Function to handle game over when time runs out.
+            }
+        }, 1000);
+    }
+}
+
+// Format time to MM:SS with leading zeros
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 }
 
 function gameOver() {
@@ -184,7 +206,7 @@ function resetBoard() {
 function restart() {
     resetBoard();
     shuffleCards();
-    timeLeft = time;
+    startTimer(time);
     score = 0;
     document.querySelector(".score").textContent = score;
     gridContainer.innerHTML = "";
@@ -192,7 +214,6 @@ function restart() {
     document.getElementById("gameOverModal").style.display = "none";
     document.getElementById("gameOverModalLose").style.display = "none";
     clearInterval(timerInterval);
-    startTimer();
 }
 
 window.restart = restart;

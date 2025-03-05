@@ -44,7 +44,7 @@ h2 {
     border-bottom: solid 1px #e1e1e1;
     width: 90%;
     text-align: center;
-  }
+}
 
 .column {
     padding-top: 10px;
@@ -350,12 +350,14 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    background: rgba(0, 0, 0, 0.5);
+    /* Yarı saydam arka plan */
     color: white;
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 10; /* Diğer içeriklerin üstünde göster */
+    z-index: 10;
+    /* Diğer içeriklerin üstünde göster */
     backdrop-filter: blur(2px);
 }
 
@@ -365,16 +367,18 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    background: rgba(0, 0, 0, 0.5);
+    /* Yarı saydam arka plan */
     color: white;
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 10; /* Diğer içeriklerin üstünde göster */
+    z-index: 10;
+    /* Diğer içeriklerin üstünde göster */
     backdrop-filter: blur(2px);
 }
 
-.game-modal-content{
+.game-modal-content {
     padding: 50px;
     border-radius: 20px;
     text-align: center;
@@ -382,7 +386,7 @@ h2 {
     background-color: #b699d3;
 }
 
-.game-modal-content .actions{
+.game-modal-content .actions {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -391,7 +395,7 @@ h2 {
 
 .game-modal-content h2 {
     color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -webkit-text-stroke: #6600cc 2px;
     text-shadow: #000000 5px 5px 5px;
     font-size: 45px;
@@ -401,23 +405,37 @@ h2 {
     color: #ffffff;
     -webkit-text-stroke: 1px black;
     font-size: 27px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding-top: 0;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.game-modal-content #finalScore{
+.game-modal-content #finalScore {
     font-size: 50px;
     -webkit-text-stroke: 5px black;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-bottom: 30;
 }
 
 .side p {
     font-size: 20px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding-top: 0;
 }
 
- 
+.error-message {
+    color: red;
+    display: none;
+    margin-top: 10px;
+}
+
+.time {
+    font-family: 'monospace';
+    font-size: 1em;     
+    width: 4rem;   
+    text-align: center;
+    padding: 0.5rem 0;
+    margin: 0; 
+}
+

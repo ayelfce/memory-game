@@ -6,19 +6,22 @@
         "id": "easy-1",
         "column": "repeat(2, 90px)",
         "row": "repeat(2, calc(90px / 2 * 3))",
-        "cardCount": 4
+        "cardCount": 4,
+        "time": 30
       },
       {
         "id": "easy-2",
         "column": "repeat(3, 90px)",
         "row": "repeat(2, calc(90px / 2 * 3))",
-        "cardCount": 6
+        "cardCount": 6,
+        "time": 45
       },
       {
         "id": "easy-3",
         "column": "repeat(4, 90px)",
         "row": "repeat(3, calc(90px / 2 * 3))",
-        "cardCount": 12
+        "cardCount": 12,
+        "time": 60
       }
     ]
   },
@@ -29,19 +32,22 @@
         "id": "normal-1",
         "column": "repeat(4, 90px)",
         "row": "repeat(3, calc(90px / 2 * 3))",
-        "cardCount": 12
+        "cardCount": 12,
+        "time": 40
       },
       {
         "id": "normal-2",
         "column": "repeat(4, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
-        "cardCount": 16
+        "cardCount": 16,
+        "time": 50
       },
       {
         "id": "normal-3",
         "column": "repeat(4, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
-        "cardCount": 16
+        "cardCount": 16,
+        "time": 60
       }
     ]
   },
@@ -52,19 +58,22 @@
         "id": "hard-1",
         "column": "repeat(4, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
-        "cardCount": 16
+        "cardCount": 16,
+        "time": 40
       },
       {
         "id": "hard-2",
         "column": "repeat(5, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
-        "cardCount": 20
+        "cardCount": 20,
+        "time": 45
       },
       {
         "id": "hard-3",
         "column": "repeat(5, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
-        "cardCount": 20
+        "cardCount": 20,
+        "time": 50
       }
     ]
   }
