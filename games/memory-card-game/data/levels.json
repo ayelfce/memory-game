@@ -7,21 +7,24 @@
         "column": "repeat(2, 90px)",
         "row": "repeat(2, calc(90px / 2 * 3))",
         "cardCount": 4,
-        "time": 30
+        "time": 30,
+        "max_score": 100
       },
       {
         "id": "easy-2",
         "column": "repeat(3, 90px)",
         "row": "repeat(2, calc(90px / 2 * 3))",
         "cardCount": 6,
-        "time": 45
+        "time": 45,
+        "max_score": 200
       },
       {
         "id": "easy-3",
         "column": "repeat(4, 90px)",
         "row": "repeat(3, calc(90px / 2 * 3))",
         "cardCount": 12,
-        "time": 60
+        "time": 60,
+        "max_score": 300
       }
     ]
   },
@@ -33,21 +36,24 @@
         "column": "repeat(4, 90px)",
         "row": "repeat(3, calc(90px / 2 * 3))",
         "cardCount": 12,
-        "time": 40
+        "time": 40,
+        "max_score": 400
       },
       {
         "id": "normal-2",
         "column": "repeat(4, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
         "cardCount": 16,
-        "time": 50
+        "time": 50,
+        "max_score": 500
       },
       {
         "id": "normal-3",
         "column": "repeat(4, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
         "cardCount": 16,
-        "time": 60
+        "time": 60,
+        "max_score": 600
       }
     ]
   },
@@ -59,21 +65,24 @@
         "column": "repeat(4, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
         "cardCount": 16,
-        "time": 40
+        "time": 40,
+        "max_score": 700
       },
       {
         "id": "hard-2",
         "column": "repeat(5, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
         "cardCount": 20,
-        "time": 45
+        "time": 45,
+        "max_score": 800
       },
       {
         "id": "hard-3",
         "column": "repeat(5, 90px)",
         "row": "repeat(4, calc(90px / 2 * 3))",
         "cardCount": 20,
-        "time": 50
+        "time": 50,
+        "max_score": 1000
       }
     ]
   }

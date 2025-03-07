@@ -4,11 +4,15 @@ const gridContainer = document.querySelector(".grid-container");
 let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
+let matches = 0;
+let moves = 0;
 let score = 0;
+let max_score;
 let time;
+let timeLeft;
 let timerInterval;
 
-document.querySelector(".score").textContent = score;
+document.querySelector(".accuracy").textContent = "%0";
 
 document.addEventListener("DOMContentLoaded", async function () {
     const gridContainer = document.querySelector(".grid-container");
@@ -52,10 +56,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .then((data) => {
                     const cardCount = levelSettings.cardCount;
                     time = levelSettings.time;
+                    max_score = levelSettings.max_score;
+                    timeLeft = time;
                     cards = [...data.slice(0, cardCount / 2), ...data.slice(0, cardCount / 2)];
                     shuffleCards();
                     generateCards();
-                    startTimer(time);
                 });
         } else {
             console.log("Belirtilen seviye bulunamadı!");
@@ -70,33 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function startTimer(time) {
-
-    if (time == null) {
-        time = 0;
-    } else {
-        let timeLeft = time;  // Initialize the countdown with the time passed to the function.
-        let timerInterval;
-
-        const timeElement = document.querySelector('.time');
-
-        // Ensure the timeElement has fixed width in CSS
-        timeElement.style.width = "5ch";  // Adjust according to your design
-        timeElement.style.textAlign = "center"; // Keeps text centered even when it changes length
-
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            timeElement.textContent = formatTime(timeLeft); // Update time as a string in MM:SS format
-
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                gameOverLose();  // Function to handle game over when time runs out.
-            }
-        }, 1000);
-    }
+function startTimer() {
+    const timeElement = document.querySelector('.time');
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timeElement.textContent = formatTime(timeLeft);
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            gameOverLose();
+        }
+    }, 1000);
 }
 
-// Format time to MM:SS with leading zeros
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -105,6 +95,7 @@ function formatTime(seconds) {
 
 function gameOver() {
     document.getElementById("gameOverModal").style.display = "flex";
+    score = Math.floor((matches/moves)*max_score);
     document.getElementById("finalScore").textContent = score;
     let userName = localStorage.getItem("playerName");
     updateHighScore(userName, score);
@@ -116,6 +107,7 @@ function gameOverLose() {
     document.getElementById("gameOverModalLose").style.display = "flex";
     clearInterval(timerInterval);
 }
+
 
 function shuffleCards() {
     let currentIndex = cards.length,
@@ -160,7 +152,7 @@ function flipCard() {
 
     secondCard = this;
     lockBoard = true;
-
+    moves++;
     checkForMatch();
 }
 
@@ -183,8 +175,8 @@ function checkForWin() {
 function disableCards() {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
-    score++;
-    document.querySelector(".score").textContent = score;
+    matches++;
+    document.querySelector(".accuracy").textContent = "%" + Math.floor(matches/moves*100);
     checkForWin();
     resetBoard();
 }
@@ -206,14 +198,16 @@ function resetBoard() {
 function restart() {
     resetBoard();
     shuffleCards();
-    startTimer(time);
-    score = 0;
-    document.querySelector(".score").textContent = score;
+    timeLeft = time;
+    moves = 0;
+    matches = 0;
+    document.querySelector(".accuracy").textContent = "%0";
     gridContainer.innerHTML = "";
     generateCards();
     document.getElementById("gameOverModal").style.display = "none";
     document.getElementById("gameOverModalLose").style.display = "none";
     clearInterval(timerInterval);
+    startTimer();
 }
 
 window.restart = restart;
