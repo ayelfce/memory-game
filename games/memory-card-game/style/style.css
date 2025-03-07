@@ -87,7 +87,7 @@ h2 {
 
 .actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 5px;
 }
 
@@ -110,6 +110,7 @@ h2 {
     padding: 0;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     font-size: 15px;
     border-radius: 10px;
     margin: auto auto;
@@ -136,111 +137,6 @@ h2 {
     position: relative;
     transform-style: preserve-3d;
     transition: all 0.5s ease-in-out;
-}
-
-
-@media (max-width: 768px) and (orientation: portrait) {
-
-    .column.side,
-    .column.middle {
-        width: 100%;
-        float: none;
-        clear: both;
-    }
-
-    .column.middle {
-        height: 70%;
-    }
-
-    .column.equal {
-        width: 100%;
-        margin-bottom: 45%;
-    }
-
-    .actions {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        transform: scale(0.8);
-    }
-
-    .card {
-        width: 90%;
-        height: 90%;
-    }
-
-    .header {
-        font-size: 25px;
-    }
-}
-
-@media (max-width: 550px) and (orientation: portrait) {
-    .column.middle {
-        height: 60%;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-        transform: scale(0.7);
-    }
-
-    .card {
-        width: 85%;
-        height: 85%;
-    }
-
-    .header {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 350px) and (orientation: portrait) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        transform: scale(0.65);
-    }
-
-    .card {
-        width: 80%;
-        height: 80%;
-    }
-
-    .header {
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 900px) and (orientation: landscape) {
-    .actions {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        transform: scale(0.5);
-    }
-
-    .card {
-        width: 90%;
-        height: 90%;
-    }
-
-    .header {
-        font-size: 25px;
-    }
-
-    .leaderboard {
-        transform: scale(0.7);
-        transform-origin: top;
-    }
-
-    .header {
-        font-size: 15px;
-    }
 }
 
 .front-image {
@@ -345,7 +241,7 @@ h2 {
 }
 
 #gameOverModal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -362,7 +258,7 @@ h2 {
 }
 
 #gameOverModalLose {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -379,16 +275,18 @@ h2 {
 }
 
 .game-modal-content {
-    padding: 50px;
+    padding: 35px;
     border-radius: 20px;
     text-align: center;
-    width: 290px;
+    width: 40%;
+    height: auto;
     background-color: #b699d3;
+    transform: scale(0.85);
 }
 
 .game-modal-content .actions {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
     font-size: 25px;
 }
@@ -432,10 +330,143 @@ h2 {
 
 .time {
     font-family: 'monospace';
-    font-size: 1em;     
-    width: 4rem;   
+    font-size: 1em;
+    width: 4rem;
     text-align: center;
     padding: 0.5rem 0;
-    margin: 0; 
+    margin: 0;
 }
 
+@media (max-width: 900px) and (orientation: portrait) {
+    .game-modal-content {
+        transform: scale(0.90);
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+
+    .column.side,
+    .column.middle {
+        width: 100%;
+        float: none;
+        clear: both;
+    }
+
+    .column.middle {
+        height: 70%;
+    }
+
+    .column.equal {
+        width: 100%;
+        margin-bottom: 15%;
+    }
+
+    .actions {
+        font-size: 70%;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        transform: scale(0.8);
+    }
+
+    .card {
+        width: 90%;
+        height: 90%;
+    }
+
+    .header {
+        font-size: 25px;
+    }
+
+    .game-modal-content {
+        transform: scale(0.75);
+    }
+}
+
+@media (max-width: 550px) and (orientation: portrait) {
+    .column.middle {
+        height: 60%;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        transform: scale(0.7);
+    }
+
+    .card {
+        width: 85%;
+        height: 85%;
+    }
+
+    .header {
+        font-size: 20px;
+    }
+
+    .game-modal-content {
+        transform: scale(0.75);
+    }
+
+    .game-modal-content h2 {
+        font-size: 26px;
+        text-shadow: #000000 2px 2px 2px;
+        -webkit-text-stroke: #6600cc 1px;
+    }
+}
+
+@media (max-width: 375px) and (orientation: portrait) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        transform: scale(0.65);
+    }
+
+    .card {
+        width: 80%;
+        height: 80%;
+    }
+
+    .header {
+        font-size: 15px;
+    }
+
+    .game-modal-content h2 {
+        font-size: 24px;
+    }
+
+    .game-modal-content {
+        transform: scale(0.65);
+        width: 85%;
+    }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        transform: scale(0.5);
+    }
+
+    .card {
+        width: 90%;
+        height: 90%;
+    }
+
+    .header {
+        font-size: 25px;
+    }
+
+    .leaderboard {
+        transform: scale(0.7);
+        transform-origin: top;
+    }
+
+    .game-modal-content {
+        transform: scale(0.75);
+        width: 70%;
+    }
+
+    .column.equal {
+        width: 100%;
+        margin-bottom: 30%;
+    }
+}

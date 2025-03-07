@@ -38,6 +38,7 @@
         <button onclick="restart()"><i class="fa-solid fa-rotate-left"></i></button>
         <button onclick="goToLeaderboard()"><i class="fa-solid fa-chart-column"></i></button>
         <button onclick="history.back();"><i class="fa-solid fa-right-from-bracket"></i></button>
+        <button id="nextLevelButton"><i class="fas fa-angle-double-right"></i></button>
       </div>
     </div>
   </div>
@@ -52,6 +53,7 @@
     </div>
   </div>
   <script type="module" src="../scripts/game.js"></script>
+  <script type="module" src="../scripts/main.js"></script>
   <script>
     window.goToLeaderboard = function () {
     getLeaderboard().then((leaderboardData) => {

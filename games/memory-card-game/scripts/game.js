@@ -95,7 +95,7 @@ function formatTime(seconds) {
 
 function gameOver() {
     document.getElementById("gameOverModal").style.display = "flex";
-    score = Math.floor((matches/moves)*max_score);
+    score = Math.floor((matches / moves) * max_score);
     document.getElementById("finalScore").textContent = score;
     let userName = localStorage.getItem("playerName");
     updateHighScore(userName, score);
@@ -176,7 +176,7 @@ function disableCards() {
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
     matches++;
-    document.querySelector(".accuracy").textContent = "%" + Math.floor(matches/moves*100);
+    document.querySelector(".accuracy").textContent = "%" + Math.floor(matches / moves * 100);
     checkForWin();
     resetBoard();
 }
