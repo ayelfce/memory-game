@@ -2,6 +2,8 @@
 
 A browser-based memory card matching game with multiple difficulty levels, score tracking, and leaderboard functionality.
 
+This project is hosted using GitHub Pages. You can access the project [here](https://ayelfce.github.io/memory-game/).
+
 ## ⭐ Features
 - 🎮 **Multiple Difficulty Levels**: Easy, Normal, and Hard modes with progressively challenging card layouts and time limits  
 - 🏆 **Score System**: Points awarded based on matching accuracy and level difficulty  
