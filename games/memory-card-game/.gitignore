@@ -1,0 +1,27 @@
+# Firebase configuration
+config.js
+.env
+
+# Node modules (eğer kullanıyorsanız)
+node_modules/
+
+# Derlenmiş dosyalar 
+dist/
+build/
+
+# IDE ve editör dosyaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS dosyaları
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Geçici dosyalar
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
